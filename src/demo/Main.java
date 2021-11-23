@@ -6,5 +6,6 @@ public class Main {
 	Model model1 = new Model();
 	View view1 = new View();
 	Controller controller1 = new Controller(model1, view1);
+	//comment
 	}
 }
