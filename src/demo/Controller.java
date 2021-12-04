@@ -50,9 +50,10 @@ public class Controller {
 		 
 		 //button to bring users to view items panel
 		 this.view.viewItemsBTN.addActionListener(new ActionListener() {
-
+                
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					setList(view);
 					view.sp.setRightComponent(view.viewItemsPanel);
 				}
 				 
@@ -105,5 +106,12 @@ public class Controller {
 				view.dtmodel.addRow(m.row);
 
 				
+	}
+	
+	public void setList(View v) {
+		for(int i = 0; i < m.itemList.size(); i++) {
+			v.itemListArr.set(i, m.itemList.get(i));
+
+		}
 	}
 }

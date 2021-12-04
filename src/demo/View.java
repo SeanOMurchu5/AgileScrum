@@ -2,6 +2,7 @@ package demo;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.JButton;
@@ -66,7 +67,8 @@ public class View {
 
 	
 	//View items panel
-	
+    ArrayList<Item> itemListArr= new ArrayList<Item>(50);
+	JComboBox itemListCB = new JComboBox(itemListArr.toArray());
 
 	
 	//Customer registration table
