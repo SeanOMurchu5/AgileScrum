@@ -1,7 +1,12 @@
 package demo;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -23,10 +28,10 @@ public class View {
 	
 	//Jpanels and Frames ..etc
 	JPanel home = new JPanel(new MigLayout("filly"));
-    JPanel StockControlPanel = new JPanel(new MigLayout("filly"));
-    JPanel addItemsPanel = new JPanel(new MigLayout("filly"));
+    JPanel StockControlPanel = new JPanel(new MigLayout());
+    JPanel addItemsPanel = new JPanel(new MigLayout("debug","fill"));
     JPanel viewItemsPanel = new JPanel(new MigLayout("filly"));
-    JPanel ShoppingBasketPanel = new JPanel(new MigLayout("filly"));
+    JPanel ShoppingBasketPanel = new JPanel(new MigLayout("fill"));
     JPanel ChangeCalculatorPanel = new JPanel(new MigLayout("filly"));
     JPanel ItemPackingPanel = new JPanel(new MigLayout("filly"));
 
@@ -46,26 +51,22 @@ public class View {
 	//add items panel
 	String itemTypeArr[] = { "Luxury", "Essential", "Gift" };
 	JLabel itemNameHeader = new JLabel("Item Name");
-	JTextField itemNameTF = new JTextField(40);
+	JTextField itemNameTF = new JTextField(20);
 	JLabel itemTypeHeader = new JLabel("Item Type");
 	JComboBox itemTypeCB = new JComboBox(itemTypeArr);
 	JLabel expirationDateHeader = new JLabel("Expiration date");
+	JLabel yearHeader = new JLabel("year");
+	JLabel monthHeader = new JLabel("month");
+	JLabel dayHeader = new JLabel("day");
+	JTextField yearTF = new JTextField(4);
+	JTextField monthTF = new JTextField(2);
+	JTextField dayTF = new JTextField(2);
+    JButton submitItemBTN = new JButton("add");
+    JButton returnToItemsBTN = new JButton("return");
+
 	
 	//View items panel
 	
-
-
-	
-	//Customer Registration JPanel
-	JLabel nameHeader = new JLabel("Name");
-	JLabel addressHeader = new JLabel("Address");
-	JLabel emailHeader = new JLabel("Email");
-	JLabel phoneHeader = new JLabel("Phone No.");
-	JTextField nameTF = new JTextField(20);
-	JTextField addressTF = new JTextField(50);
-	JTextField emailTF = new JTextField(50);
-	JTextField phoneNumberTF = new JTextField(20);
-
 
 	
 	//Customer registration table
@@ -98,6 +99,22 @@ public class View {
 		StockControlPanel.add(addItemsBTN);
 		StockControlPanel.add(viewItemsBTN);
 		
+		//Add items Panel
+		addItemsPanel.add(itemNameHeader);
+		addItemsPanel.add(itemNameTF);
+		addItemsPanel.add(itemTypeHeader);
+		addItemsPanel.add(itemTypeCB,"wrap");
+		addItemsPanel.add(expirationDateHeader,"span,split 7");
+		addItemsPanel.add(yearHeader);
+		addItemsPanel.add(yearTF);
+		addItemsPanel.add(monthHeader);
+		addItemsPanel.add(monthTF);
+		addItemsPanel.add(dayHeader);
+		addItemsPanel.add(dayTF,"wrap");
+		addItemsPanel.add(submitItemBTN);
+		addItemsPanel.add(returnToItemsBTN);
+
+
 		// Frame
 		frame.add(sp, "grow");
 		frame.pack();

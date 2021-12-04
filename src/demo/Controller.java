@@ -16,6 +16,8 @@ public class Controller {
 	}
 	
 	public void viewControl(View view) {
+		
+		//button to bring users to home panel button.
 		 this.view.homeButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -25,7 +27,17 @@ public class Controller {
 			}
 			 
 		 });
-		 
+		 //button to bring users to stock control button
+		 this.view.stockControlButton.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					view.sp.setRightComponent(view.StockControlPanel);
+				}
+				 
+			 });
+		 //button to bring users to add items panel.
 		 this.view.addItemsBTN.addActionListener(new ActionListener() {
 
 				@Override
@@ -36,12 +48,39 @@ public class Controller {
 				 
 			 });
 		 
+		 //button to bring users to view items panel
 		 this.view.viewItemsBTN.addActionListener(new ActionListener() {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
 					view.sp.setRightComponent(view.viewItemsPanel);
+				}
+				 
+			 });
+		 
+		 //Add items page button that adds the item to the list
+		 this.view.submitItemBTN.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					String name = view.itemNameTF.getText();
+					String type = (String) view.itemTypeCB.getSelectedItem();
+					int year = Integer.parseInt(view.yearTF.getText());
+					int month = Integer.parseInt(view.monthTF.getText());
+					int day = Integer.parseInt(view.dayTF.getText());
+
+					Item i = new Item(name, type, year, month, day);
+					m.addItem(i);
+				}
+				 
+			 });
+		 //Add items page button that returns user to stock control panel.
+		 this.view.returnToItemsBTN.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					view.sp.setRightComponent(view.StockControlPanel);
 				}
 				 
 			 });
