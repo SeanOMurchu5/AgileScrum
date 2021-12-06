@@ -39,7 +39,7 @@ class Item{
 		
 	}
 	
-	public Item(String name, String itemType,int year,int month, int day) {
+	public Item(String name, String itemType,int day,int month, int year) {
 		this.name = name;
 		this.itemType = itemType;
 		this.day = day;
@@ -59,6 +59,17 @@ class Item{
 		return quantity;
 	}
 	
+	public int getDay() {
+		return day;
+	}
+	
+	public int getMonth() {
+		return month;
+	}
+	
+	public int getYear() {
+		return year;
+	}
 	public boolean checkIfExpired(){
 		Calendar c = Calendar.getInstance();
 		if(year > c.get(Calendar.YEAR)) {

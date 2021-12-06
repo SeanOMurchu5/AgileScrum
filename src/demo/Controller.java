@@ -2,6 +2,11 @@ package demo;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 
 public class Controller {
 
@@ -59,6 +64,17 @@ public class Controller {
 				 
 			 });
 		 
+		 //Remove Item Button
+		 this.view.removeItemBTN.addActionListener(new ActionListener() {
+             
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					removeItem(view.itemListCB.getSelectedItem());
+					
+				}
+				 
+			 });
+		 
 		 //Add items page button that adds the item to the list
 		 this.view.submitItemBTN.addActionListener(new ActionListener() {
 
@@ -70,11 +86,12 @@ public class Controller {
 					int month = Integer.parseInt(view.monthTF.getText());
 					int day = Integer.parseInt(view.dayTF.getText());
 
-					Item i = new Item(name, type, year, month, day);
+					Item i = new Item(name, type, day, month, year);
 					m.addItem(i);
 				}
 				 
 			 });
+		 
 		 //Add items page button that returns user to stock control panel.
 		 this.view.returnToItemsBTN.addActionListener(new ActionListener() {
 
@@ -109,9 +126,23 @@ public class Controller {
 	}
 	
 	public void setList(View v) {
+		ArrayList<String> newItemsArr = new ArrayList<String>();
+		
 		for(int i = 0; i < m.itemList.size(); i++) {
-			v.itemListArr.set(i, m.itemList.get(i));
+			String day = String.valueOf( m.itemList.get(i).getDay());
+			String month = String.valueOf( m.itemList.get(i).getMonth());
+			String year = String.valueOf( m.itemList.get(i).getYear());
+
+		    newItemsArr.add(i, m.itemList.get(i).getName() + " : expires= " + day + "/" + month +"/"+year);
 
 		}
+		JComboBox newCB= new JComboBox(newItemsArr.toArray());
+
+		
+		v.itemListCB.setModel(new DefaultComboBoxModel(newItemsArr.toArray()));
+	}
+	
+	public void removeItem(String s) {
+		
 	}
 }

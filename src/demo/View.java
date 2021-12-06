@@ -31,12 +31,12 @@ public class View {
 	JPanel home = new JPanel(new MigLayout("filly"));
     JPanel StockControlPanel = new JPanel(new MigLayout());
     JPanel addItemsPanel = new JPanel(new MigLayout("debug","fill"));
-    JPanel viewItemsPanel = new JPanel(new MigLayout("filly"));
+    JPanel viewItemsPanel = new JPanel(new MigLayout());
     JPanel ShoppingBasketPanel = new JPanel(new MigLayout("fill"));
     JPanel ChangeCalculatorPanel = new JPanel(new MigLayout("filly"));
     JPanel ItemPackingPanel = new JPanel(new MigLayout("filly"));
 
-	JPanel topBar = new JPanel(new MigLayout());
+	JPanel topBar = new JPanel(new MigLayout("fill"));
 	JSplitPane sp = new JSplitPane(SwingConstants.HORIZONTAL, topBar, home);
 	JButton homeButton = new JButton("Home");
 	JButton stockControlButton = new JButton("Stock Control");
@@ -67,8 +67,9 @@ public class View {
 
 	
 	//View items panel
-    ArrayList<Item> itemListArr= new ArrayList<Item>(50);
+    ArrayList<String> itemListArr= new ArrayList<String>();
 	JComboBox itemListCB = new JComboBox(itemListArr.toArray());
+	JButton removeItemBTN = new JButton("Remove");
 
 	
 	//Customer registration table
@@ -107,14 +108,20 @@ public class View {
 		addItemsPanel.add(itemTypeHeader);
 		addItemsPanel.add(itemTypeCB,"wrap");
 		addItemsPanel.add(expirationDateHeader,"span,split 7");
-		addItemsPanel.add(yearHeader);
-		addItemsPanel.add(yearTF);
+		addItemsPanel.add(dayHeader);
+		addItemsPanel.add(dayTF);
+	
 		addItemsPanel.add(monthHeader);
 		addItemsPanel.add(monthTF);
-		addItemsPanel.add(dayHeader);
-		addItemsPanel.add(dayTF,"wrap");
+		
+		addItemsPanel.add(yearHeader);
+		addItemsPanel.add(yearTF,"wrap");
 		addItemsPanel.add(submitItemBTN);
 		addItemsPanel.add(returnToItemsBTN);
+		
+		//ViewItemsPanel
+		viewItemsPanel.add(itemListCB);
+		viewItemsPanel.add(removeItemBTN);
 
 
 		// Frame
