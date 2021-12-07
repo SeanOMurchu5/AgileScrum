@@ -53,6 +53,17 @@ public class Controller {
 				}
 				 
 			 });
+		 
+		 //button to bring users to Item packing panel 
+		 this.view.boxDimensionsBTN.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					view.sp.setRightComponent(view.addBoxPanel);
+				}
+				 
+			 });
 		 //button to bring users to add items panel.
 		 this.view.addItemsBTN.addActionListener(new ActionListener() {
 
