@@ -22,6 +22,14 @@ public class Model {
 		
 	}
 	
+	public void removeItem(Model m,Item item) {
+		for(int i = 0; i < m.itemList.size(); i++) {
+			if(item.getName().equals(m.itemList.get(i).getName())) {
+				m.itemList.remove(i);
+			}
+		}
+	}
+	
 	
 }
 
@@ -83,4 +91,7 @@ class Item{
 		return expired;
 	}
 	
-}
+	
+	}
+	
+

@@ -33,8 +33,8 @@ public class View {
     JPanel addItemsPanel = new JPanel(new MigLayout("debug","fill"));
     JPanel viewItemsPanel = new JPanel(new MigLayout());
     JPanel ShoppingBasketPanel = new JPanel(new MigLayout("fill"));
-    JPanel ChangeCalculatorPanel = new JPanel(new MigLayout("filly"));
-    JPanel ItemPackingPanel = new JPanel(new MigLayout("filly"));
+    JPanel ChangeCalculatorPanel = new JPanel(new MigLayout("fill"));
+    JPanel ItemPackingPanel = new JPanel(new MigLayout());
 
 	JPanel topBar = new JPanel(new MigLayout("fill"));
 	JSplitPane sp = new JSplitPane(SwingConstants.HORIZONTAL, topBar, home);
@@ -65,11 +65,18 @@ public class View {
     JButton submitItemBTN = new JButton("add");
     JButton returnToItemsBTN = new JButton("return");
 
-	
 	//View items panel
     ArrayList<String> itemListArr= new ArrayList<String>();
 	JComboBox itemListCB = new JComboBox(itemListArr.toArray());
 	JButton removeItemBTN = new JButton("Remove");
+	JButton refreshListBTN = new JButton("Refresh");
+	
+	//Item packaging panel
+	JLabel boxesWeightLabel = new JLabel("Box Weights");
+	JLabel itemWeightsLabel = new JLabel("Item Weights");
+	JLabel numItemsLabel = new JLabel("Number of items");
+	JButton boxWeightsBTN = new JButton("Enter Box Weights");
+	JButton itemWeightsBTN = new JButton("Enter Box Weights");
 
 	
 	//Customer registration table
@@ -122,7 +129,17 @@ public class View {
 		//ViewItemsPanel
 		viewItemsPanel.add(itemListCB);
 		viewItemsPanel.add(removeItemBTN);
+		viewItemsPanel.add(refreshListBTN);
+		
+		//ItemPackingPanel
+		ItemPackingPanel.add(boxesWeightLabel);
+		ItemPackingPanel.add(boxWeightsBTN,"wrap");
+		ItemPackingPanel.add(itemWeightsLabel);
+		ItemPackingPanel.add(itemWeightsBTN,"wrap");
+		ItemPackingPanel.add(numItemsLabel);
 
+		
+		
 
 		// Frame
 		frame.add(sp, "grow");

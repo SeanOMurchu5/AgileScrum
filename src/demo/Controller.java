@@ -22,7 +22,7 @@ public class Controller {
 	
 	public void viewControl(View view) {
 		
-		//button to bring users to home panel button.
+		//button to bring users to home panel .
 		 this.view.homeButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -32,13 +32,24 @@ public class Controller {
 			}
 			 
 		 });
-		 //button to bring users to stock control button
+		 //button to bring users to stock control panel
 		 this.view.stockControlButton.addActionListener(new ActionListener() {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
 					view.sp.setRightComponent(view.StockControlPanel);
+				}
+				 
+			 });
+		 
+		 //button to bring users to Item packing panel 
+		 this.view.itemPackingButton.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					view.sp.setRightComponent(view.ItemPackingPanel);
 				}
 				 
 			 });
@@ -69,7 +80,18 @@ public class Controller {
              
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					removeItem(view.itemListCB.getSelectedItem());
+					removeItem(view.itemListCB.getSelectedIndex());
+					
+				}
+				 
+			 });
+		 
+		 //Refresh Item Button
+		 this.view.refreshListBTN.addActionListener(new ActionListener() {
+             
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					setList(view);
 					
 				}
 				 
@@ -128,6 +150,7 @@ public class Controller {
 	public void setList(View v) {
 		ArrayList<String> newItemsArr = new ArrayList<String>();
 		
+		
 		for(int i = 0; i < m.itemList.size(); i++) {
 			String day = String.valueOf( m.itemList.get(i).getDay());
 			String month = String.valueOf( m.itemList.get(i).getMonth());
@@ -142,7 +165,12 @@ public class Controller {
 		v.itemListCB.setModel(new DefaultComboBoxModel(newItemsArr.toArray()));
 	}
 	
-	public void removeItem(String s) {
-		
+	public void removeItem(int y) {
+		for(int i = 0; i < m.itemList.size(); i++) {
+			
+			if(y == i) {
+				m.removeItem(m, m.itemList.get(i));
+			}
+		}
 	}
 }
