@@ -39,6 +39,7 @@ public class View {
 	JPanel ChangeCalculatorPanel = new JPanel(new MigLayout("fill"));
 	JPanel ItemPackingPanel = new JPanel(new MigLayout());
 	JPanel addBoxPanel = new JPanel(new MigLayout());
+	JPanel itemDimensionsPanel = new JPanel(new MigLayout());
 
 	JPanel topBar = new JPanel(new MigLayout("fill"));
 	JSplitPane sp = new JSplitPane(SwingConstants.HORIZONTAL, topBar, home);
@@ -75,11 +76,11 @@ public class View {
 	JButton refreshListBTN = new JButton("Refresh");
 
 	// Item packaging panel
-	JLabel boxesDimensionsLabel = new JLabel("Box Weights");
-	JLabel itemDimensionsLabel = new JLabel("Item Weights");
+	JLabel boxesDimensionsLabel = new JLabel("Box Dimensions");
+	JLabel itemDimensionsLabel = new JLabel("Item Dimensions");
 	JLabel numItemsLabel = new JLabel("Number of items");
 	JButton boxDimensionsBTN = new JButton("Enter Box Dimensions");
-	JButton itemDimensionsBTN = new JButton("Enter Box Weights");
+	JButton itemDimensionsBTN = new JButton("Enter Item Dimensions");
 	JSpinner numItemsSpinner = new JSpinner();
 
 	// addBox panel
@@ -96,9 +97,15 @@ public class View {
 
 	// Customer registration table
 	JLabel orderHPage = new JLabel("Order History");
-	Object[] columns = { "OrderNo.", "Burger", "Side", "Drink" };
+	
+	
+	//ItemDimensions Panel
+	JLabel ItemDimensionsHeader = new JLabel("Item Dimensions");
+	JLabel enterDimensionsHeader = new JLabel("Enter Dimensions:");
+	Object[] columns = { "Item","Width", "Length", "Depth", "Height" };
 	DefaultTableModel dtmodel = new DefaultTableModel();
 	JTable table = new JTable();
+	
 
 	public void projectView() {
 		String systemLookAndFeelClassName = UIManager.getSystemLookAndFeelClassName();
@@ -147,13 +154,19 @@ public class View {
 		viewItemsPanel.add(refreshListBTN);
 
 		// ItemPackingPanel
+		
+		JComponent numItemField = ((JSpinner.DefaultEditor) numItemsSpinner.getEditor());
+		Dimension itemPrefSize = numItemField.getPreferredSize();
+		itemPrefSize = new Dimension(100, itemPrefSize.height);
+		numItemField.setPreferredSize(itemPrefSize);
+		
 		ItemPackingPanel.add(boxesDimensionsLabel);
-		ItemPackingPanel.add(boxDimensionsBTN, "wrap");
-		ItemPackingPanel.add(itemDimensionsLabel);
-		ItemPackingPanel.add(itemDimensionsBTN, "wrap");
+		ItemPackingPanel.add(boxDimensionsBTN, "grow,wrap");
 		ItemPackingPanel.add(numItemsLabel);
-		ItemPackingPanel.add(numItemsSpinner);
-
+		ItemPackingPanel.add(numItemsSpinner,"grow,wrap");
+		ItemPackingPanel.add(itemDimensionsLabel);
+		ItemPackingPanel.add(itemDimensionsBTN, "grow,wrap");
+		
 		// addBoxPanel
 
 		JComponent weightfield = ((JSpinner.DefaultEditor) weightSpinner.getEditor());
@@ -178,7 +191,17 @@ public class View {
 		addBoxPanel.add(depthLabel);
 		addBoxPanel.add(depthSpinner,"wrap");
 		addBoxPanel.add(addBoxBTN,"span,align right");
+		
+		//ItemDimensionsPanel
 
+
+		dtmodel.setColumnIdentifiers(columns);
+		table.setModel(dtmodel);
+		table.setRowHeight(30);
+		itemDimensionsPanel.add(ItemDimensionsHeader, "wrap");
+		itemDimensionsPanel.add(enterDimensionsHeader, "wrap");
+		itemDimensionsPanel.add(table);
+		itemDimensionsPanel.add(new JScrollPane(table));
 		// Frame
 		frame.add(sp, "grow");
 		frame.pack();

@@ -3,6 +3,8 @@ package demo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
@@ -12,7 +14,6 @@ public class Controller {
 
 	Model m;
 	View view;
-	int customerNo = 0;
 	public Controller(Model m, View v) {
 		this.m = m;
 		this.view = v;
@@ -54,7 +55,7 @@ public class Controller {
 				 
 			 });
 		 
-		 //button to bring users to Item packing panel 
+		 //button to bring users to Box Dimensions panel 
 		 this.view.boxDimensionsBTN.addActionListener(new ActionListener() {
 
 				@Override
@@ -136,26 +137,19 @@ public class Controller {
 				 
 			 });
 		 
+		 //button to bring users to view items panel
+		 this.view.itemDimensionsBTN.addActionListener(new ActionListener() {
+                
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					int numItems = Integer.parseInt(String.valueOf(view.numItemsSpinner.getValue()));
+					view.sp.setRightComponent(view.itemDimensionsPanel);
+					setItemsTable(numItems);
+				}
+				 
+			 });
 		 
-	}
-	
-	public void addCustomer() {
-		// orderHistory table
-		String name = view.nameTF.getText();
-		String address = view.addressTF.getText();
-		String phoneNo = view.phoneNumberTF.getText();
-		String email = view.emailTF.getText();
-
-				customerNo += 1;
-				m.row[0] = customerNo;
-				m.row[1] = name;
-				m.row[2] = address;
-				m.row[3] = phoneNo;
-				m.row[4] = email;
-
-				view.dtmodel.addRow(m.row);
-
-				
+		 
 	}
 	
 	public void setList(View v) {
@@ -183,5 +177,20 @@ public class Controller {
 				m.removeItem(m, m.itemList.get(i));
 			}
 		}
+	}
+	
+	public void setItemsTable(int y) {
+	System.out.print(y);
+		for(int i = 0; i < y;i++) {
+		  m.row[0] = "item "+(i+1);
+		  m.row[1] = 0;
+		  m.row[2] = 0;
+		  m.row[3] = 0;
+		  m.row[4] = 0;
+
+		  view.dtmodel.addRow(m.row);
+		}
+
+		
 	}
 }
