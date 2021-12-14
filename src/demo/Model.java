@@ -10,8 +10,9 @@ public class Model {
 
 	ArrayList<Item> itemList = new ArrayList<Item>();
 	ArrayList<Box> boxList = new ArrayList<Box>();
+	ArrayList<ItemDimensions> itemDimensions = new ArrayList<ItemDimensions>();
 	
-	Object[] row = new Object[4];
+	Object[] row = new Object[5];
 
 
 	public Model() {
@@ -108,17 +109,15 @@ class Box{
 	private double width;
 	private double length;
 	private double depth;
-	private double height;
 	
 	public Box() {
 		
 	}
 	
-	public Box(double w, double l, double d, double h) {
+	public Box(double w, double l, double d) {
 		this.width = w;
 		this.length = l;
 		this.depth = d;
-		this.height = h;
 	}
 	
 	public double getWidth() {
@@ -133,9 +132,40 @@ class Box{
 		return depth;
 	}
 	
-	public double getHeight(){
-		return height;
+
+	
+}
+
+class ItemDimensions{
+	private double weight;
+	private double width;
+	private double length;
+	private double depth;
+	
+	public ItemDimensions() {
+		
+	}
+	
+	public ItemDimensions(double weight,double width, double l, double d) {
+		this.weight = weight;
+		this.width = width;
+		this.length = l;
+		this.depth = d;
+	
+	}
+	
+	public double getWeight() {
+		return weight;
+	}
+	public double getLength() {
+		return length;
+	}
+	public double getDepth() {
+		return depth;
 	}
 	
 	
+	public double getWidth() {
+		return width;
+	}
 }

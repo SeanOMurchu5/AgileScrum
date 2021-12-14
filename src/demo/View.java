@@ -87,11 +87,11 @@ public class View {
 	JLabel boxHeader = new JLabel("Add the dimensions and weight of the new box");
 	JLabel weightLabel = new JLabel("Weight (cm):");
 	JLabel lengthLabel = new JLabel("Length (cm):");
-	JLabel heightLabel = new JLabel("Height (cm):");
+	JLabel widthLabel = new JLabel("Width (cm):");
 	JLabel depthLabel = new JLabel("Depth (cm):");
 	JSpinner weightSpinner = new JSpinner();
 	JSpinner lengthSpinner = new JSpinner();
-	JSpinner heightSpinner = new JSpinner();
+	JSpinner widthSpinner = new JSpinner();
 	JSpinner depthSpinner = new JSpinner();
 	JButton addBoxBTN = new JButton("Add Box");
 
@@ -102,9 +102,12 @@ public class View {
 	//ItemDimensions Panel
 	JLabel ItemDimensionsHeader = new JLabel("Item Dimensions");
 	JLabel enterDimensionsHeader = new JLabel("Enter Dimensions:");
-	Object[] columns = { "Item","Width", "Length", "Depth", "Height" };
+	Object[] columns = { "Item","Width", "Length", "Depth" ,"weight"};
 	DefaultTableModel dtmodel = new DefaultTableModel();
 	JTable table = new JTable();
+	JButton itemsSubmitBTN = new JButton("Submit");
+	JLabel numBoxesLabel = new JLabel("Number of boxes required for these items: ");
+	JLabel numBoxesNumberLabel = new JLabel("0");
 	
 
 	public void projectView() {
@@ -175,10 +178,10 @@ public class View {
 		weightfield.setPreferredSize(prefSize);
 
 		JComponent lengthField = ((JSpinner.DefaultEditor) lengthSpinner.getEditor());
-		JComponent heightField = ((JSpinner.DefaultEditor) heightSpinner.getEditor());
+		JComponent widthField = ((JSpinner.DefaultEditor) widthSpinner.getEditor());
 		JComponent depthField = ((JSpinner.DefaultEditor) depthSpinner.getEditor());
 		lengthField.setPreferredSize(prefSize);
-		heightField.setPreferredSize(prefSize);
+		widthField.setPreferredSize(prefSize);
 		depthField.setPreferredSize(prefSize);
 
 		addBoxPanel.add(boxHeader, "wrap");
@@ -186,8 +189,8 @@ public class View {
 		addBoxPanel.add(weightSpinner, "wrap");
 		addBoxPanel.add(lengthLabel);
 		addBoxPanel.add(lengthSpinner, "wrap");
-		addBoxPanel.add(heightLabel);
-		addBoxPanel.add(heightSpinner, "wrap");
+		addBoxPanel.add(widthLabel);
+		addBoxPanel.add(widthSpinner, "wrap");
 		addBoxPanel.add(depthLabel);
 		addBoxPanel.add(depthSpinner,"wrap");
 		addBoxPanel.add(addBoxBTN,"span,align right");
@@ -202,6 +205,10 @@ public class View {
 		itemDimensionsPanel.add(enterDimensionsHeader, "wrap");
 		itemDimensionsPanel.add(table);
 		itemDimensionsPanel.add(new JScrollPane(table));
+		itemDimensionsPanel.add(numBoxesLabel);
+		itemDimensionsPanel.add(numBoxesNumberLabel,"wrap");
+		itemDimensionsPanel.add(itemsSubmitBTN,"span 1, align right");
+		
 		// Frame
 		frame.add(sp, "grow");
 		frame.pack();
