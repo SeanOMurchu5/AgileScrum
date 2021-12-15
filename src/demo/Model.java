@@ -23,10 +23,16 @@ public class Model {
 	}
 
 	public void addItem(Item item) {
+<<<<<<< HEAD
+			id++;
+            item.setId(id);
+			itemList.add(item);
+=======
 		id++;
 		item.setId(id);
 		itemList.add(item);
 
+>>>>>>> origin
 	}
 	
 	public void addBox(Box box) {

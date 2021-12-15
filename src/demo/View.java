@@ -164,6 +164,11 @@ public class View {
 		// ViewItemsPanel
 		viewItemsPanel.add(itemListCB);
 		viewItemsPanel.add(removeItemBTN);
+<<<<<<< HEAD
+		
+		//ShoppingBasketPanel
+		JComboBox comboBox;
+=======
 		viewItemsPanel.add(refreshListBTN);
 
 		// ItemPackingPanel
@@ -186,6 +191,7 @@ public class View {
 		Dimension prefSize = weightfield.getPreferredSize();
 		prefSize = new Dimension(100, prefSize.height);
 		weightfield.setPreferredSize(prefSize);
+>>>>>>> origin
 
 		JComponent lengthField = ((JSpinner.DefaultEditor) lengthSpinner.getEditor());
 		JComponent widthField = ((JSpinner.DefaultEditor) widthSpinner.getEditor());
