@@ -1,10 +1,21 @@
 package demo;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+import net.miginfocom.swing.MigLayout;
 
 public class Model {
 	Model m;
@@ -23,16 +34,13 @@ public class Model {
 	}
 
 	public void addItem(Item item) {
-<<<<<<< HEAD
 			id++;
             item.setId(id);
 			itemList.add(item);
-=======
 		id++;
 		item.setId(id);
 		itemList.add(item);
 
->>>>>>> origin
 	}
 	
 	public void addBox(Box box) {
@@ -230,56 +238,80 @@ class SortbyItemArea implements Comparator<ItemDimensions>
 }
  
 
-//Cart Class
-class cart{
-	   
-    private Map<String, CartItem> items = new HashMap<String, CartItem>();
-    private int num;
-    private float price;
+////Cart Class
+//class cart{
+//	   
+//    private Map<String, CartItem> items = new HashMap<String, CartItem>();
+//    private int num;
+//    private float price;
+//
+//    
+//    public Map<String, CartItem> getItems() {
+//        return items;
+//    }
+//    
+//    public int getNum(){
+//        num = 0;
+//        for(Map.Entry<String, CartItem> me:items.entrySet()){
+//            num += me.getValue().getNum();
+//        }
+//        return num;
+//    }
+//
+//    public float getPrice() {
+//        price = 0;
+//        for(Map.Entry<String, CartItem> me:items.entrySet()){
+//            price += me.getValue().getPrice();
+//        }
+//        return price;
+//    }
+//
+//
+//    public void addCart(Book book) {
+//        if(items.containsKey(book.getId())){
+//            
+//            CartItem item = items.get(book.getId());
+//            item.setNum(item.getNum() + 1);
+//       }else{
+//           
+//            CartItem item = new CartItem();
+//            item.setBook(book);
+//            item.setNum(1);
+//           items.put(book.getId(), item);
+//        }
+//    }
+//
+//    
+//    public void deleteCartByBook(String bookId) {
+//        CartItem item = items.get(bookId);
+//        if (item.getNum() > 1) {
+//            item.setNum(item.getNum() - 1);
+//	 }else {
+//            items.remove(bookId);
+//        }
+//   }
+//}
 
-    
-    public Map<String, CartItem> getItems() {
-        return items;
-    }
-    
-    public int getNum(){
-        num = 0;
-        for(Map.Entry<String, CartItem> me:items.entrySet()){
-            num += me.getValue().getNum();
-        }
-        return num;
-    }
+ class calculator extends JFrame {
+	private JTextField basketTextField;
+	private JTextField amountTextField;
+	private JTextField calculateTextField;
+	
+	public calculator() {
+		
+		
+		
+		
+		
+	}
 
-    public float getPrice() {
-        price = 0;
-        for(Map.Entry<String, CartItem> me:items.entrySet()){
-            price += me.getValue().getPrice();
-        }
-        return price;
-    }
+	public static void main(String[] args) {
+		calculator calculator = new calculator();
+		calculator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		calculator.setSize(200,125);
+		calculator.pack();
+		calculator.setVisible(true);
+		calculator.setTitle("Calculator");
+	}
+ }
 
-
-    public void addCart(Book book) {
-        if(items.containsKey(book.getId())){
-            
-            CartItem item = items.get(book.getId());
-            item.setNum(item.getNum() + 1);
-       }else{
-           
-            CartItem item = new CartItem();
-            item.setBook(book);
-            item.setNum(1);
-           items.put(book.getId(), item);
-        }
-    }
-
-    
-    public void deleteCartByBook(String bookId) {
-        CartItem item = items.get(bookId);
-        if (item.getNum() > 1) {
-            item.setNum(item.getNum() - 1);
-	 }else {
-            items.remove(bookId);
-        }
-   }
-}
