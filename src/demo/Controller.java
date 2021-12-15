@@ -25,16 +25,17 @@ public class Controller {
 
 	public void viewControl(View view) {
 
-		// button to bring users to home panel .
-		this.view.homeButton.addActionListener(new ActionListener() {
+		// button to bring users to home panel
+				this.view.homePanelBTN.addActionListener(new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				view.sp.setRightComponent(view.home);
-			}
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+						view.sp.setRightComponent(view.homePanel);
+					}
 
-		});
+				});
+		
 		// button to bring users to stock control panel
 		this.view.stockControlButton.addActionListener(new ActionListener() {
 
@@ -88,8 +89,10 @@ public class Controller {
 						double length = new Double(view.lengthSpinner.getValue().toString());
 						double width = new Double(view.widthSpinner.getValue().toString());
 						double depth = new Double(view.depthSpinner.getValue().toString());
+						double weight = new Double(view.weightSpinner.getValue().toString());
 
-						Box box = new Box(width, length, depth);
+
+						Box box = new Box(width, length, depth, weight);
 						m.addBox(box);
 					}
 
@@ -180,6 +183,7 @@ public class Controller {
 
 	}
 
+	//sets the current list of items, from what the user has input so far.
 	public void setList(View v) {
 		ArrayList<String> newItemsArr = new ArrayList<String>();
 
@@ -196,6 +200,7 @@ public class Controller {
 		v.itemListCB.setModel(new DefaultComboBoxModel(newItemsArr.toArray()));
 	}
 
+	//Removes an item from the list.
 	public void removeItem(int y) {
 		for (int i = 0; i < m.itemList.size(); i++) {
 
@@ -205,6 +210,7 @@ public class Controller {
 		}
 	}
 
+	//Sets the items dimensions table based on the number of items the user is looking to input.
 	public void setItemsTable(int y) {
 
 		for (int i = 0; i < y; i++) {
@@ -219,9 +225,12 @@ public class Controller {
 
 	}
 
+	//Submit item Dimensions method.
+	//This method gets the items dimensions and box dimensions from the users input from the table and the previously entered boxes,
+	//it then calculates how many boxes is needed to fit all the items. 
 	public void submitItemDimensions() {
-		ArrayList sortedBoxes = new ArrayList<Double>();
-		ArrayList sortedItems = new ArrayList<Double>();
+		ArrayList<Box> sortedBoxes = new ArrayList<Box>();
+		ArrayList<ItemDimensions> sortedItems = new ArrayList<ItemDimensions>();
 		ArrayList usedBoxes = new ArrayList<Integer>();
 		int rows = view.dtmodel.getRowCount();
 		for (int i = 0; i < rows; i++) {
@@ -236,8 +245,10 @@ public class Controller {
 			m.itemDimensions.add(id);
 
 			// adding to sortedItems
-			double totalArea = width * length * depth;
-			sortedItems.add(totalArea);
+			
+			
+			
+			sortedItems.add(id);
 		}
 
 		for (int i = 0; i < m.boxList.size(); i++) {
@@ -246,18 +257,29 @@ public class Controller {
 			double length = m.boxList.get(i).getLength();
 
 			double totalArea = width * length * depth;
-			sortedBoxes.add(totalArea);
+			m.boxList.get(i).setArea(totalArea);
+
+			sortedBoxes.add(m.boxList.get(i));
 		}
 
-		Collections.sort(sortedItems);
-		Collections.sort(sortedBoxes);
+		//Sort the boxes and items
+		Collections.sort(sortedItems, new SortbyItemArea());
+		Collections.sort(sortedBoxes, new SortbyArea());
 
+		//Check how many boxes are needed.
+		//Goes in descending order, from biggest item to smallest.
+		//and biggest box to smallest.
+		//Based on total area.
 		for (int i = 0; i < sortedItems.size(); i++) {
 			for (int y = 0; y < sortedBoxes.size(); y++) {
-				if (new Double(sortedItems.get(i).toString()) <= new Double(sortedBoxes.get(y).toString())) {
-					double var = 0;
-					var = new Double(sortedBoxes.get(y).toString()) - new Double(sortedItems.get(i).toString());
-					sortedBoxes.set(y, var);
+				if ((new Double(sortedItems.get(i).getTotalArea()) <= new Double(sortedBoxes.get(y).getTotalArea()))&&(new Double(sortedItems.get(i).getWeight()) <= new Double(sortedBoxes.get(i).getWeight()))) {
+					
+					double areaDiff = 0;
+					double weightDiff = 0;
+					areaDiff = new Double(sortedBoxes.get(y).getTotalArea()) - new Double(sortedItems.get(i).getTotalArea());
+					weightDiff = new Double(sortedBoxes.get(y).getTotalArea()) - new Double(sortedItems.get(i).getTotalArea());
+					sortedBoxes.get(i).setArea(areaDiff);
+					sortedBoxes.get(i).setWeight(weightDiff);
 					boolean found = false;
 					for(int x =0; x < usedBoxes.size(); x++) {
 						

@@ -2,6 +2,7 @@ package demo;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,6 +46,7 @@ public class Model {
 
 }
 
+//Item Class with name, type, date, quantity and if its expired.
 class Item {
 	private int id;
 	private String name;
@@ -91,6 +93,7 @@ class Item {
 		return year;
 	}
 
+	//method to check if the item is currently expired
 	public boolean checkIfExpired() {
 		Calendar c = Calendar.getInstance();
 		if (year > c.get(Calendar.YEAR)) {
@@ -106,20 +109,24 @@ class Item {
 
 }
 
-
+//Box class with dimensions and getters and setters.
 class Box{
 	private double width;
 	private double length;
 	private double depth;
+	private double weight;
+	private double totalArea;
+	
 	
 	public Box() {
 		
 	}
 	
-	public Box(double w, double l, double d) {
+	public Box(double w, double l, double d, double weight) {
 		this.width = w;
 		this.length = l;
 		this.depth = d;
+		this.weight = weight;
 	}
 	
 	public double getWidth() {
@@ -134,15 +141,32 @@ class Box{
 		return depth;
 	}
 	
+	public double getWeight() {
+		return weight;
+	}
+	
+	public double getTotalArea() {
+		return totalArea;
+	}
+	
+	public void setArea(double A) {
+		this.totalArea = A;
+	}
+	
+	public void setWeight(double W) {
+		this.weight = W;
+	}
 
 	
 }
 
+//Item Dimensions class, Able to set a items dimensions.
 class ItemDimensions{
 	private double weight;
 	private double width;
 	private double length;
 	private double depth;
+	private double totalArea;
 	
 	public ItemDimensions() {
 		
@@ -170,7 +194,35 @@ class ItemDimensions{
 	public double getWidth() {
 		return width;
 	}
+	
+	public double getTotalArea() {
+		return totalArea;
+	}
 }
+
+class SortbyArea implements Comparator<Box>
+{
+    
+    public int compare(Box a, Box b)
+    {
+    	
+        return (int) (a.getTotalArea() - b.getTotalArea());
+    }
+    
+  
+}
+
+
+class SortbyItemArea implements Comparator<ItemDimensions>
+{
+    
+    public int compare(ItemDimensions a, ItemDimensions b)
+    {
+    	
+        return (int) (a.getTotalArea() - b.getTotalArea());
+    }
+}
+ 
 
 //Cart Class
 class cart{
@@ -184,7 +236,7 @@ class cart{
         return items;
     }
     
-    public int getNum() {
+    public int getNum(){
         num = 0;
         for(Map.Entry<String, CartItem> me:items.entrySet()){
             num += me.getValue().getNum();

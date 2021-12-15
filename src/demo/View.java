@@ -30,8 +30,8 @@ public class View {
 
 	}
 
-	// Jpanels and Frames ..etc
-	JPanel home = new JPanel(new MigLayout("filly"));
+	// JPanels and Frames ..etc
+	JPanel homePanel = new JPanel(new MigLayout());
 	JPanel StockControlPanel = new JPanel(new MigLayout());
 	JPanel addItemsPanel = new JPanel(new MigLayout("debug", "fill"));
 	JPanel viewItemsPanel = new JPanel(new MigLayout());
@@ -42,12 +42,17 @@ public class View {
 	JPanel itemDimensionsPanel = new JPanel(new MigLayout());
 
 	JPanel topBar = new JPanel(new MigLayout("fill"));
-	JSplitPane sp = new JSplitPane(SwingConstants.HORIZONTAL, topBar, home);
-	JButton homeButton = new JButton("Home");
+	JSplitPane sp = new JSplitPane(SwingConstants.HORIZONTAL, topBar, StockControlPanel);
+	JButton homePanelBTN = new JButton("Home");
 	JButton stockControlButton = new JButton("Stock Control");
 	JButton shoppingBasketButton = new JButton("Shopping Basket");
 	JButton changeCalculatorButton = new JButton("Change Calculator");
 	JButton itemPackingButton = new JButton("Item Packing");
+
+	
+	//Home Panel
+	JLabel HomePageLabel = new JLabel("Home Page");
+	JLabel HomeDescLabel = new JLabel("This is a generic home page for a Business");
 
 	// Stock Control Panel
 	JButton addItemsBTN = new JButton("Add item");
@@ -124,12 +129,17 @@ public class View {
 		frame.setLayout(new MigLayout("fill"));
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
-		topBar.add(homeButton, "grow");
+		topBar.add(homePanelBTN,"grow");
 		topBar.add(stockControlButton, "grow");
 		topBar.add(shoppingBasketButton, "grow");
 		topBar.add(changeCalculatorButton, "grow");
 		topBar.add(itemPackingButton, "span 3, grow");
 
+		//home panel
+		homePanel.add(HomePageLabel,"wrap");
+		homePanel.add(HomeDescLabel);
+
+		
 		// Stock Control Panel
 		StockControlPanel.add(addItemsBTN);
 		StockControlPanel.add(viewItemsBTN);
