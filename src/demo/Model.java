@@ -18,8 +18,6 @@ public class Model {
 			id++;
             item.setId(id);
 			itemList.add(item);
-			
-		
 	}
 	
 	

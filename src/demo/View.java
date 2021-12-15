@@ -122,6 +122,9 @@ public class View {
 		//ViewItemsPanel
 		viewItemsPanel.add(itemListCB);
 		viewItemsPanel.add(removeItemBTN);
+		
+		//ShoppingBasketPanel
+		JComboBox comboBox;
 
 
 		// Frame
