@@ -24,9 +24,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
-
-import demo.basket.event;
-import demo.basket.tax;
 import javafx.scene.text.Font;
 import net.miginfocom.swing.MigLayout;
 
