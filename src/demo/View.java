@@ -21,7 +21,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
-import javafx.scene.text.Font;
+//import javafx.scene.text.Font;
 import net.miginfocom.swing.MigLayout;
 
 public class View {
@@ -164,11 +164,9 @@ public class View {
 		// ViewItemsPanel
 		viewItemsPanel.add(itemListCB);
 		viewItemsPanel.add(removeItemBTN);
-<<<<<<< HEAD
 		
 		//ShoppingBasketPanel
 		JComboBox comboBox;
-=======
 		viewItemsPanel.add(refreshListBTN);
 
 		// ItemPackingPanel
@@ -191,7 +189,6 @@ public class View {
 		Dimension prefSize = weightfield.getPreferredSize();
 		prefSize = new Dimension(100, prefSize.height);
 		weightfield.setPreferredSize(prefSize);
->>>>>>> origin
 
 		JComponent lengthField = ((JSpinner.DefaultEditor) lengthSpinner.getEditor());
 		JComponent widthField = ((JSpinner.DefaultEditor) widthSpinner.getEditor());
