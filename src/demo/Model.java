@@ -1,10 +1,21 @@
 package demo;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+import net.miginfocom.swing.MigLayout;
 
 public class Model {
 	Model m;
@@ -29,6 +40,10 @@ public class Model {
 		id++;
 		item.setId(id);
 		itemList.add(item);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6edc05bb68cd49fce9408fb5e0d64b4aa6995484
 	}
 	
 	public void addBox(Box box) {
@@ -226,6 +241,7 @@ class SortbyItemArea implements Comparator<ItemDimensions>
 }
  
 
+<<<<<<< HEAD
 ////Cart Class
 //class cart{
 //	   
@@ -278,3 +294,30 @@ class SortbyItemArea implements Comparator<ItemDimensions>
 //            items.remove(bookId);
 //        }
 //   }
+=======
+
+
+ class calculator extends JFrame {
+	private JTextField basketTextField;
+	private JTextField amountTextField;
+	private JTextField calculateTextField;
+	
+	public calculator() {
+		
+		
+		
+		
+		
+	}
+
+	public static void main(String[] args) {
+		calculator calculator = new calculator();
+		calculator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		calculator.setSize(200,125);
+		calculator.pack();
+		calculator.setVisible(true);
+		calculator.setTitle("Calculator");
+	}
+ }
+
+>>>>>>> 6edc05bb68cd49fce9408fb5e0d64b4aa6995484
