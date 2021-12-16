@@ -121,6 +121,33 @@ public class Controller {
 			}
 
 		});
+		
+		this.view.calculateButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				calculator calculator = new calculator();
+				double amountPaid = new Double(view.amountTextField.getText().toString());
+				double totalBasket = new Double(view.basketTextField.getText().toString());
+                double difference = amountPaid - totalBasket;
+				calculator.calculate(difference);
+				view.TF50.setText(String.valueOf(calculator.amountOfFifties));
+				view.TF20.setText(String.valueOf(calculator.amountOfTwenties));
+				view.TF10.setText(String.valueOf(calculator.amountOfTens));
+				view.TF5.setText(String.valueOf(calculator.amountOfFives));
+				view.TF1.setText(String.valueOf(calculator.amountOfOne));
+				view.TF50c.setText(String.valueOf(calculator.amountOfFiftyCent));
+				view.TF20c.setText(String.valueOf(calculator.amountOfTwentiesCent));
+				view.TF10c.setText(String.valueOf(calculator.amountOfTenCent));
+				view.TF5c.setText(String.valueOf(calculator.amountOfFiveCent));
+				view.TF1c.setText(String.valueOf(calculator.amountOfOneCent));
+
+
+
+			}
+
+		});
 
 		// button to add box to list
 		this.view.addBoxBTN.addActionListener(new ActionListener() {

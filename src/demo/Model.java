@@ -244,22 +244,69 @@ class SortbyItemArea implements Comparator<ItemDimensions>
 	private JTextField basketTextField;
 	private JTextField amountTextField;
 	private JTextField calculateTextField;
+	int amountOfTwenties=0;
+	int amountOfFifties=0;
+	int amountOfTens=0;
+	int amountOfFives=0;
+	int amountOfOne=0;
+	int amountOfTwentiesCent=0;
+	int amountOfFiftyCent=0;
+	int amountOfTenCent=0;
+	int amountOfFiveCent=0;
+	int amountOfOneCent=0;
+
 	
 	public calculator() {
 		
 		
-		
-		
-		
+	}
+	
+	public void calculate(double amount) {
+	
+
+
+       while(amount != 0){
+    	   
+    	   if(amount>=50) {
+    		   amount = amount - 50;
+    		   amountOfFifties++;
+    	   }else if(amount >= 20) {
+    		   amount = amount - 20;
+    		   amountOfTwenties++;
+    	   }else if(amount >= 10) {
+    		   amount = amount - 10;
+    		   amountOfTens++;
+    	   }else if(amount >= 5) {
+    		   amount = amount - 5;
+    		   amountOfFives++;
+    	   }else if(amount >= 1) {
+    		   amount = amount - 1;
+    		   amountOfOne++;
+    	   }else if(amount >= 0.50) {
+    		   amount = amount - .50;
+    		   amountOfFiftyCent++;
+    	   }else if(amount >= 0.20) {
+    		   amount = amount - .20;
+    		   amountOfTwentiesCent++;
+    	   }else if(amount >= 0.10) {
+    		   amount = amount - .10;
+    		   amountOfTenCent++;
+    	   }else if(amount >= 0.05) {
+    		   amount = amount - .05;
+    		   amountOfFiveCent++;
+    	   }else if(amount <= .01) {
+    		   amount = amount - .01;
+    		   amountOfOneCent++;
+    	   }
+    	   
+       }
+     
+
+    		   
+
+
+
 	}
 
-	public static void main(String[] args) {
-		calculator calculator = new calculator();
-		calculator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		calculator.setSize(200,125);
-		calculator.pack();
-		calculator.setVisible(true);
-		calculator.setTitle("Calculator");
-	}
  }
 

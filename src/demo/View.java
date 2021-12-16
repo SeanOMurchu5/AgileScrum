@@ -6,6 +6,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.awt.Font;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -24,7 +25,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
-import javafx.scene.text.Font;
 import net.miginfocom.swing.MigLayout;
 
 public class View {
@@ -128,6 +128,32 @@ public class View {
 	 JTextField calculateTextField = new JTextField();
 	 JButton calculateButton = new JButton("Calculate");
 	 JButton clearButton = new JButton("Clear All");
+	 JLabel JL50 = new JLabel("Number of 50s:");
+	 JLabel JL20 = new JLabel("Number of 20s:");
+	 JLabel JL10 = new JLabel("Number of 10s:");
+	 JLabel JL5 = new JLabel("Number of 5s:");
+	 JLabel JL1 = new JLabel("Number of 1s:");
+	 JLabel JL50c = new JLabel("Number of .50s:");
+	 JLabel JL20c = new JLabel("Number of .20s:");
+	 JLabel JL10c= new JLabel("Number of .10cs:");
+	 JLabel JL5c = new JLabel("Number of .05cs:");
+	 JLabel JL1c = new JLabel("Number of .01cs:");
+
+	 JTextField TF50 = new JTextField("");
+	 JTextField TF20 = new JTextField("");
+	 JTextField TF10 = new JTextField("");
+	 JTextField TF5 = new JTextField("");
+	 JTextField TF1 = new JTextField("");
+	 JTextField TF50c = new JTextField("");
+	 JTextField TF20c = new JTextField("");
+	 JTextField TF10c= new JTextField("");
+	 JTextField TF5c = new JTextField("");
+	 JTextField TF1c = new JTextField("");
+
+
+
+
+
 	 
 	 //Shopping Basket Panel
      String[] items = {"Luxury", "Essential", "Gift"};
@@ -256,33 +282,67 @@ public class View {
 		
 		//CalculatorPanel
 		ChangeCalculatorPanel.setBackground(Color.GREEN);
-		ChangeCalculatorPanel.setLayout(new MigLayout("debug, fillx", "[grow][grow][][][][]", "[][][][][][][][][][][][][][][][][][][][][][]"));	
-		//headingLabel.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		ChangeCalculatorPanel.setLayout(new MigLayout(""));	
+		headingLabel.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		basketTextField.setColumns(10);
 		amountTextField.setColumns(10);
-		ChangeCalculatorPanel.add(headingLabel, "cell 1 0");
-		ChangeCalculatorPanel.add(totalLabel, "cell 0 2,alignx trailing");
-		ChangeCalculatorPanel.add(basketTextField, "cell 1 2,growx");
+		ChangeCalculatorPanel.add(headingLabel, "wrap");
+		ChangeCalculatorPanel.add(totalLabel, "");
+		ChangeCalculatorPanel.add(basketTextField, "wrap");
 		
-		ChangeCalculatorPanel.add(amountLabel, "cell 0 4,alignx trailing");
-		ChangeCalculatorPanel.add(amountTextField, "cell 1 4,growx");
+		ChangeCalculatorPanel.add(amountLabel, "");
+		ChangeCalculatorPanel.add(amountTextField, "wrap");
 		ChangeCalculatorPanel.add(clearButton);
-		ChangeCalculatorPanel.add(calculateButton, "cell 1 7");	
+		ChangeCalculatorPanel.add(calculateButton, "wrap");	
 		
-		ChangeCalculatorPanel.add(calculateTextField, "cell 0 9 2 1,growx");
-		calculateTextField.setColumns(10);
+		ChangeCalculatorPanel.add(JL50,"");
+		ChangeCalculatorPanel.add(TF50,"grow,wrap");
 
+		ChangeCalculatorPanel.add(JL20,"");
+		ChangeCalculatorPanel.add(TF20,"grow,wrap");
+
+		ChangeCalculatorPanel.add(JL10,"");
+		ChangeCalculatorPanel.add(TF10,"grow,wrap");
+
+		ChangeCalculatorPanel.add(JL5,"");
+		ChangeCalculatorPanel.add(TF5,"grow,wrap");
+
+		ChangeCalculatorPanel.add(JL1,"");
+		ChangeCalculatorPanel.add(TF1,"grow,wrap");
+
+		ChangeCalculatorPanel.add(JL50c,"");
+		ChangeCalculatorPanel.add(TF50c,"grow,wrap");
+
+		ChangeCalculatorPanel.add(JL20c,"");
+		ChangeCalculatorPanel.add(TF20c,"grow,wrap");
+
+		ChangeCalculatorPanel.add(JL10c,"");
+		ChangeCalculatorPanel.add(TF10c,"grow,wrap");
+
+		ChangeCalculatorPanel.add(JL5c,"");
+		ChangeCalculatorPanel.add(TF5c,"grow,wrap");
+
+		ChangeCalculatorPanel.add(JL1c,"");
+		ChangeCalculatorPanel.add(TF1c,"grow,wrap");
+
+
+
+
+
+
+		
+		
 		//Basket Panel
 		ShoppingBasketPanel.setBackground(Color.YELLOW);
-		ShoppingBasketPanel.setLayout(new MigLayout("debug, fillx", "[][grow][][][]", "[][][][][][][][][][][][][][][][][][]"));
-		
-		//headerLabel.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		ShoppingBasketPanel.add(headerLabel, "cell 0 0");	
-		ShoppingBasketPanel.add(itemLabel, "cell 0 2");	
+		ShoppingBasketPanel.setLayout(new MigLayout(""));
+		headerLabel.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		ShoppingBasketPanel.add(headerLabel, "wrap");	
+		ShoppingBasketPanel.add(itemLabel, "");	
 		//itemComboBox.addActionListener(this);
-		ShoppingBasketPanel.add(itemComboBox, "cell 0 3");
-		ShoppingBasketPanel.add(submitButton, "cell 0 5");
-		ShoppingBasketPanel.add(quantityLabel , "flowx,cell 0 7");
+		ShoppingBasketPanel.add(itemComboBox, "wrap");
+		ShoppingBasketPanel.add(quantityLabel , "wrap ");
+		ShoppingBasketPanel.add(submitButton, "");
+		
 
 		
 		// Frame
