@@ -7,6 +7,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.awt.Font;
+import java.awt.Image;
+
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -25,6 +27,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
+
 import net.miginfocom.swing.MigLayout;
 
 public class View {
@@ -162,16 +165,20 @@ public class View {
      JLabel headerLabel = new JLabel("Shopping Basket");
 	 JLabel itemLabel = new JLabel("Enter an item you wish to purchase: ");
 	 JButton submitButton = new JButton("SUBMIT");;
-	 ImageIcon image  = new ImageIcon(getClass().getResource("cart.jpg"));
-	 JLabel imageLabel 	;	
+	 ImageIcon imageIcon = new ImageIcon();
+	 
+	 JButton basketButton  = new JButton("Add to basket");
+
+	 JLabel imageLabel = new JLabel(imageIcon);
+	String imageString = "cart.jpg";
+		
 	// event e = new event();
 	// tax t = new tax();
 	 JLabel quantityLabel = new JLabel("Enter Quantity: ");
 	 JComboBox itemComboBox  = new JComboBox(items);
-	 JComboBox quantityComboBox;
-	 JTextArea textarea;
+	 JComboBox quantityComboBox = new JComboBox(quantity);
+	 JTextArea textarea = new JTextArea("", 5, 30);
 	 JLabel textAreaLabel;
-     JButton basketButton;
      JButton shoppingCalculateButton;
 
 	public void projectView() {
@@ -188,6 +195,8 @@ public class View {
 		frame.setLayout(new MigLayout("fill"));
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
+		topBar.setBackground(Color.BLACK);
+
 		topBar.add(homePanelBTN,"grow");
 		topBar.add(stockControlButton, "grow");
 		topBar.add(shoppingBasketButton, "grow");
@@ -195,15 +204,21 @@ public class View {
 		topBar.add(itemPackingButton, "span 3, grow");
 
 		//home panel
+		homePanel.setBackground(Color.GREEN);
+
 		homePanel.add(HomePageLabel,"wrap");
 		homePanel.add(HomeDescLabel);
 
 		
 		// Stock Control Panel
+		StockControlPanel.setBackground(Color.GREEN);
+
 		StockControlPanel.add(addItemsBTN);
 		StockControlPanel.add(viewItemsBTN);
 
 		// Add items Panel
+		addItemsPanel.setBackground(Color.GREEN);
+
 		addItemsPanel.add(itemNameHeader);
 		addItemsPanel.add(itemNameTF);
 		addItemsPanel.add(itemTypeHeader);
@@ -221,6 +236,7 @@ public class View {
 		addItemsPanel.add(returnToItemsBTN);
 
 		// ViewItemsPanel
+		viewItemsPanel.setBackground(Color.GREEN);
 		viewItemsPanel.add(itemListCB);
 		viewItemsPanel.add(removeItemBTN);
 		
@@ -234,7 +250,8 @@ public class View {
 		Dimension itemPrefSize = numItemField.getPreferredSize();
 		itemPrefSize = new Dimension(100, itemPrefSize.height);
 		numItemField.setPreferredSize(itemPrefSize);
-		
+		ItemPackingPanel.setBackground(Color.GREEN);
+
 		ItemPackingPanel.add(boxesDimensionsLabel);
 		ItemPackingPanel.add(boxDimensionsBTN, "grow,wrap");
 		ItemPackingPanel.add(numItemsLabel);
@@ -256,6 +273,7 @@ public class View {
 		lengthField.setPreferredSize(prefSize);
 		widthField.setPreferredSize(prefSize);
 		depthField.setPreferredSize(prefSize);
+		addBoxPanel.setBackground(Color.GREEN);
 
 		addBoxPanel.add(boxHeader, "wrap");
 		addBoxPanel.add(weightLabel);
@@ -269,6 +287,8 @@ public class View {
 		addBoxPanel.add(addBoxBTN,"span,align right");
 		
 		//ItemDimensionsPanel
+		itemDimensionsPanel.setBackground(Color.GREEN);
+
 		dtmodel.setColumnIdentifiers(columns);
 		table.setModel(dtmodel);
 		table.setRowHeight(30);
@@ -333,15 +353,22 @@ public class View {
 		
 		
 		//Basket Panel
-		ShoppingBasketPanel.setBackground(Color.YELLOW);
+		imageIcon =  new ImageIcon(
+				new ImageIcon(imageString).getImage().getScaledInstance(200, 300, Image.SCALE_DEFAULT));
+		imageLabel.setIcon(imageIcon);
+		ShoppingBasketPanel.setBackground(Color.GREEN);
 		ShoppingBasketPanel.setLayout(new MigLayout(""));
 		headerLabel.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		ShoppingBasketPanel.add(headerLabel, "wrap");	
 		ShoppingBasketPanel.add(itemLabel, "");	
 		//itemComboBox.addActionListener(this);
 		ShoppingBasketPanel.add(itemComboBox, "wrap");
-		ShoppingBasketPanel.add(quantityLabel , "wrap ");
-		ShoppingBasketPanel.add(submitButton, "");
+		ShoppingBasketPanel.add(quantityLabel , " ");
+		ShoppingBasketPanel.add(quantityComboBox , " wrap");
+		ShoppingBasketPanel.add(submitButton, "wrap");
+		ShoppingBasketPanel.add(textarea, "grow,wrap");
+
+		ShoppingBasketPanel.add(imageLabel);
 		
 
 		

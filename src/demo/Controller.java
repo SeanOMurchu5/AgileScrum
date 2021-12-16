@@ -2,6 +2,7 @@ package demo;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -91,6 +92,13 @@ public class Controller {
 			}
 
 		});
+		
+		this.view.submitButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				view.textarea.setText("Item: " + view.itemComboBox.getSelectedItem().toString()
+				+ "  " + "  " +  "Quantity: " + view.quantityComboBox.getSelectedItem().toString());
+			}
+		});
 
 		this.view.calculateButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -101,12 +109,7 @@ public class Controller {
 
 		this.view.changeCalculatorButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				calculator calculator = new calculator();
-				calculator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				calculator.setSize(200, 125);
-				calculator.pack();
-				calculator.setVisible(true);
-				calculator.setTitle("Calculator");
+				
 				view.sp.setRightComponent(view.ChangeCalculatorPanel);
 
 			}
@@ -142,7 +145,6 @@ public class Controller {
 				view.TF10c.setText(String.valueOf(calculator.amountOfTenCent));
 				view.TF5c.setText(String.valueOf(calculator.amountOfFiveCent));
 				view.TF1c.setText(String.valueOf(calculator.amountOfOneCent));
-
 
 
 			}
